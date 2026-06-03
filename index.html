@@ -467,6 +467,34 @@
       word-break: keep-all;
     }
 
+    .program-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .program-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 13px;
+      border: 1px solid rgba(47, 113, 109, 0.28);
+      border-radius: 8px;
+      background: rgba(255, 253, 248, 0.72);
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 850;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .program-link:hover {
+      transform: translateY(-1px);
+      border-color: rgba(47, 113, 109, 0.52);
+      background: rgba(255, 253, 248, 0.95);
+    }
+
     .split {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -820,6 +848,9 @@
             <time>2025</time>
           </div>
           <p>남한산성역사문화관 총괄 PD로 기술 기반 관람 경험을 기획했습니다.</p>
+          <div class="program-actions">
+            <a class="program-link" href="assets/namhansanseong-ost.mp4" target="_blank" rel="noopener">캐릭터 OST 영상 보기</a>
+          </div>
         </article>
         <article class="program">
           <div class="program-top">
