@@ -78,6 +78,24 @@
       letter-spacing: 0;
     }
 
+    .brand-name {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand-email {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 750;
+      transition: color 160ms ease;
+    }
+
+    .brand-email:hover {
+      color: var(--blue);
+    }
+
     .brand-mark {
       width: 34px;
       height: 34px;
@@ -820,10 +838,13 @@
 <body>
   <header class="site-header">
     <nav class="nav" aria-label="주요 메뉴">
-      <a class="brand" href="#top" aria-label="이윤경 Jessy 홈">
+      <div class="brand">
         <span class="brand-mark">JY</span>
-        <span>Jessy Lee</span>
-      </a>
+        <div class="brand-name">
+          <a href="#top" aria-label="이윤경 Jessy 홈">Jessy Lee</a>
+          <a class="brand-email" href="mailto:jsslee75@naver.com">jsslee75@naver.com</a>
+        </div>
+      </div>
       <div class="nav-links">
         <a href="#topics">강의분야</a>
         <a href="#career">이력</a>
