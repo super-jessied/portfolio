@@ -3,95 +3,849 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>강사 포트폴리오 테스트</title>
+  <meta name="description" content="이윤경(Jessy) 강사의 AI 교육, 디지털 리터러시, 기술기반 문화예술교육 프로필">
+  <title>이윤경 Jessy | AI & Future Education Instructor</title>
   <style>
     :root {
       color-scheme: light;
-      font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
-      color: #202124;
-      background: #f6f7f9;
+      --ink: #111827;
+      --muted: #5b6472;
+      --line: #d9e0ea;
+      --panel: #ffffff;
+      --soft: #f4f7fb;
+      --blue: #0b57d0;
+      --cyan: #00a3c7;
+      --green: #2d7d67;
+      --violet: #6d5dfc;
+      --shadow: 0 24px 70px rgba(18, 31, 54, 0.12);
+      font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
+      background: var(--soft);
+      color: var(--ink);
     }
 
     * {
       box-sizing: border-box;
     }
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 32px 20px;
+    html {
+      scroll-behavior: smooth;
     }
 
-    main {
-      width: min(720px, 100%);
-      padding: 48px;
-      border: 1px solid #d9dde3;
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background:
+        linear-gradient(115deg, rgba(11, 87, 208, 0.10), transparent 34%),
+        linear-gradient(245deg, rgba(0, 163, 199, 0.12), transparent 36%),
+        #f4f7fb;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(217, 224, 234, 0.78);
+      background: rgba(244, 247, 251, 0.86);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      width: min(1120px, calc(100% - 40px));
+      height: 68px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
       border-radius: 8px;
-      background: #ffffff;
-      box-shadow: 0 18px 40px rgba(32, 33, 36, 0.08);
+      background: #111827;
+      color: #ffffff;
+      font-size: 14px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      padding: 8px 0;
+    }
+
+    .hero {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 72px 0 64px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.82fr);
+      gap: 54px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      min-width: 0;
     }
 
     .eyebrow {
-      margin: 0 0 12px;
+      margin: 0 0 18px;
+      color: var(--blue);
       font-size: 14px;
-      font-weight: 700;
-      color: #0b57d0;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(34px, 6vw, 56px);
-      line-height: 1.05;
+      max-width: 760px;
+      font-size: clamp(46px, 6.5vw, 86px);
+      line-height: 1.02;
+      letter-spacing: 0;
     }
 
-    p {
-      margin: 20px 0 0;
-      font-size: 18px;
-      line-height: 1.7;
-      color: #4b5563;
+    .hero-name {
+      display: block;
+      color: #0b57d0;
     }
 
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 32px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: #e8f0fe;
+    .lead {
+      margin: 28px 0 0;
+      max-width: 650px;
+      color: #3f4856;
+      font-size: clamp(18px, 2.1vw, 22px);
+      line-height: 1.78;
+      word-break: keep-all;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 34px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tags li {
+      max-width: 100%;
+      flex: 0 1 auto;
+      padding: 10px 13px;
+      border: 1px solid rgba(11, 87, 208, 0.18);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.72);
       color: #174ea6;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
-    .dot {
-      width: 8px;
-      height: 8px;
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 8px;
+      border: 1px solid #111827;
+      font-weight: 850;
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .button.primary {
+      background: #111827;
+      color: #ffffff;
+      box-shadow: 0 12px 30px rgba(17, 24, 39, 0.18);
+    }
+
+    .button.secondary {
+      background: rgba(255, 255, 255, 0.72);
+      color: #111827;
+      border-color: rgba(17, 24, 39, 0.2);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .portrait-wrap {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .portrait-frame {
+      overflow: hidden;
+      border-radius: 8px;
+      background: #dbe5ef;
+      box-shadow: var(--shadow);
+      aspect-ratio: 4 / 5;
+    }
+
+    .portrait-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 57% 52%;
+    }
+
+    .metric-strip {
+      width: calc(100% - 36px);
+      margin: -44px auto 0;
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid rgba(217, 224, 234, 0.9);
+      border-radius: 8px;
+      background: var(--line);
+      box-shadow: 0 18px 36px rgba(18, 31, 54, 0.14);
+    }
+
+    .metric {
+      min-width: 0;
+      padding: 18px 14px;
+      background: rgba(255, 255, 255, 0.95);
+      text-align: center;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .section {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 70px 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .section-kicker {
+      margin: 0 0 10px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .section-note {
+      max-width: 410px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+      word-break: keep-all;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .field-card {
+      min-height: 176px;
+      padding: 24px;
+      border: 1px solid rgba(217, 224, 234, 0.92);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 14px 40px rgba(18, 31, 54, 0.06);
+    }
+
+    .field-card .num {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .field-card h3 {
+      margin: 24px 0 10px;
+      font-size: 21px;
+      line-height: 1.35;
+    }
+
+    .field-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      word-break: keep-all;
+    }
+
+    .profile-band {
+      background: #111827;
+      color: #ffffff;
+    }
+
+    .profile-band .section {
+      display: grid;
+      grid-template-columns: 0.72fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .profile-band h2 {
+      color: #ffffff;
+    }
+
+    .profile-band .section-kicker {
+      color: #7dd3fc;
+    }
+
+    .bio {
+      margin: 22px 0 0;
+      color: #d5dce7;
+      font-size: 18px;
+      line-height: 1.85;
+      word-break: keep-all;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 118px 1fr;
+      gap: 18px;
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .timeline-item:first-child {
+      padding-top: 0;
+    }
+
+    .year {
+      color: #7dd3fc;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: #c6cedc;
+      line-height: 1.7;
+      word-break: keep-all;
+    }
+
+    .program-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .program {
+      display: grid;
+      gap: 14px;
+      padding: 24px;
+      border: 1px solid rgba(217, 224, 234, 0.92);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.88);
+    }
+
+    .program-top {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .program h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.38;
+      word-break: keep-all;
+    }
+
+    .program time {
+      flex: 0 0 auto;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .program p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      word-break: keep-all;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .plain-panel {
+      padding: 30px;
+      border: 1px solid rgba(217, 224, 234, 0.92);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.88);
+    }
+
+    .plain-panel h3 {
+      margin: 0 0 18px;
+      font-size: 22px;
+    }
+
+    .clean-list {
+      display: grid;
+      gap: 13px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .clean-list li {
+      position: relative;
+      padding-left: 18px;
+      color: #3f4856;
+      line-height: 1.65;
+      word-break: keep-all;
+    }
+
+    .clean-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background: #34a853;
+      background: var(--cyan);
     }
 
-    @media (max-width: 560px) {
-      main {
-        padding: 32px 24px;
+    .quote-band {
+      padding: 72px 20px;
+      background:
+        linear-gradient(90deg, rgba(11, 87, 208, 0.88), rgba(0, 128, 145, 0.86)),
+        #0b57d0;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .quote-band p {
+      width: min(860px, 100%);
+      margin: 0 auto;
+      font-size: clamp(24px, 4vw, 42px);
+      font-weight: 850;
+      line-height: 1.34;
+      letter-spacing: 0;
+      word-break: keep-all;
+    }
+
+    .site-footer {
+      padding: 36px 20px 44px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 920px) {
+      .hero,
+      .profile-band .section,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .portrait-wrap {
+        width: min(520px, 100%);
+      }
+
+      .field-grid,
+      .program-list {
+        grid-template-columns: 1fr;
+      }
+
+      .section-header {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero,
+      .section {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .hero {
+        gap: 36px;
+        padding-bottom: 48px;
+      }
+
+      .lead {
+        font-size: 17px;
+        word-break: normal;
+        overflow-wrap: anywhere;
+      }
+
+      h1 {
+        font-size: clamp(38px, 11.8vw, 48px);
+      }
+
+      .tags {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: flex-start;
+      }
+
+      .tags li {
+        width: 100%;
+        font-size: 13px;
+        padding: 9px 12px;
+        text-align: center;
+      }
+
+      .metric-strip {
+        width: calc(100% - 20px);
+      }
+
+      .metric {
+        padding: 14px 8px;
+      }
+
+      .metric strong {
+        font-size: 20px;
+      }
+
+      .section {
+        padding: 52px 0;
+      }
+
+      .field-card,
+      .program,
+      .plain-panel {
+        padding: 22px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .program-top {
+        display: grid;
       }
     }
   </style>
 </head>
 <body>
-  <main>
-    <p class="eyebrow">Instructor Portfolio</p>
-    <h1>강사 프로필 사이트 준비 중</h1>
-    <p>
-      이 페이지는 GitHub 저장소와 배포 설정을 확인하기 위한 테스트 페이지입니다.
-      추후 강의 분야, 경력, 수업 자료, 문의 정보를 담은 포트폴리오로 확장할 예정입니다.
-    </p>
-    <div class="status">
-      <span class="dot" aria-hidden="true"></span>
-      배포 테스트용 페이지
-    </div>
+  <header class="site-header">
+    <nav class="nav" aria-label="주요 메뉴">
+      <a class="brand" href="#top" aria-label="이윤경 Jessy 홈">
+        <span class="brand-mark">JY</span>
+        <span>Jessy Lee</span>
+      </a>
+      <div class="nav-links">
+        <a href="#topics">강의분야</a>
+        <a href="#career">이력</a>
+        <a href="#programs">활동</a>
+        <a href="#lectures">강연주제</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">AI & Future Education Instructor</p>
+        <h1 id="hero-title">
+          기술을 삶의 언어로 바꾸는
+          <span class="hero-name">이윤경 Jessy</span>
+        </h1>
+        <p class="lead">
+          디지털 리터러시, AI 교육, 기술기반 문화예술교육을 중심으로
+          청소년·학부모·예술가·시민에게 미래교육의 감각과 창작 경험을 연결합니다.
+        </p>
+        <ul class="tags" aria-label="전문 분야">
+          <li>AI 교육</li>
+          <li>디지털 리터러시</li>
+          <li>미래교육</li>
+          <li>문화예술교육</li>
+          <li>3D 창작</li>
+        </ul>
+        <div class="hero-actions">
+          <a class="button primary" href="#programs">주요 활동 보기</a>
+          <a class="button secondary" href="#lectures">강연 주제 보기</a>
+        </div>
+      </div>
+
+      <div class="portrait-wrap" aria-label="이윤경 강사 프로필 사진">
+        <div class="portrait-frame">
+          <img src="assets/profile_image.png" alt="이윤경 Jessy 강사">
+        </div>
+        <div class="metric-strip" aria-label="주요 프로필 요약">
+          <div class="metric">
+            <strong>20+</strong>
+            <span>교육·기획 경력</span>
+          </div>
+          <div class="metric">
+            <strong>2021~</strong>
+            <span>미래교육 강의</span>
+          </div>
+          <div class="metric">
+            <strong>AI</strong>
+            <span>디지털 윤리</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="topics" aria-labelledby="topics-title">
+      <div class="section-header">
+        <div>
+          <p class="section-kicker">Lecture Fields</p>
+          <h2 id="topics-title">강의 분야</h2>
+        </div>
+        <p class="section-note">
+          기술 이해에서 창작 실습, 시민성과 윤리까지 이어지는 교육 프로그램을 설계합니다.
+        </p>
+      </div>
+
+      <div class="field-grid">
+        <article class="field-card">
+          <span class="num">01</span>
+          <h3>AI 교육과 디지털 윤리</h3>
+          <p>생성형 AI, AI 리터러시, 디지털 윤리와 시민성을 현장 언어로 풀어냅니다.</p>
+        </article>
+        <article class="field-card">
+          <span class="num">02</span>
+          <h3>미래교육과 디지털 리터러시</h3>
+          <p>학부모와 청소년이 변화하는 교육 환경을 이해하고 활용할 수 있도록 돕습니다.</p>
+        </article>
+        <article class="field-card">
+          <span class="num">03</span>
+          <h3>기술기반 문화예술교육</h3>
+          <p>3D 창작, 메타버스, 미디어 제작을 문화예술교육과 결합한 워크숍을 운영합니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="profile-band" id="career" aria-labelledby="career-title">
+      <div class="section">
+        <div>
+          <p class="section-kicker">Profile</p>
+          <h2 id="career-title">기획자와 강사의 언어를 함께 가진 교육자</h2>
+          <p class="bio">
+            서강대학교 대학원 경영(MBA) 석사 이후 전시컨벤션 PM, 마을미디어 사업 총괄,
+            문화예술교육 기획·운영을 거치며 기술과 사람 사이의 접점을 만들어왔습니다.
+            현재는 AI와 디지털 창작을 교육 현장의 실천 가능한 경험으로 번역하는 강의를 이어가고 있습니다.
+          </p>
+        </div>
+
+        <div class="timeline" aria-label="주요 경력">
+          <article class="timeline-item">
+            <span class="year">2025~</span>
+            <div>
+              <h3>한국생산성본부(KPC)</h3>
+              <p>DEQ 디지털윤리지도사자격 출제 및 감수 활동</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <span class="year">2023~</span>
+            <div>
+              <h3>컬처임팩트 이사</h3>
+              <p>기술기반 문화예술교육 기획 및 운영</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <span class="year">2021~</span>
+            <div>
+              <h3>서울시교육청 멘토·강사</h3>
+              <p>학부모 대상 미래교육 및 디지털 리터러시 강의</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <span class="year">2003~2016</span>
+            <div>
+              <h3>(주)코엑스 전시컨벤션 PM</h3>
+              <p>월드IT쇼, 리빙디자인페어, 푸드위크 등 전시 및 컨벤션 기획·운영</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="programs" aria-labelledby="programs-title">
+      <div class="section-header">
+        <div>
+          <p class="section-kicker">Recent Works</p>
+          <h2 id="programs-title">최근 주요 활동</h2>
+        </div>
+        <p class="section-note">
+          학교, 문화재단, 박물관, 창업교육 현장에서 대상별로 다른 교육 경험을 설계했습니다.
+        </p>
+      </div>
+
+      <div class="program-list">
+        <article class="program">
+          <div class="program-top">
+            <h3>AI&AR 기반 도슨트 프로그램 콘텐츠 기획·개발·운영</h3>
+            <time>2025</time>
+          </div>
+          <p>남한산성역사문화관 총괄 PD로 기술 기반 관람 경험을 기획했습니다.</p>
+        </article>
+        <article class="program">
+          <div class="program-top">
+            <h3>구로 어린이나라 운영총괄</h3>
+            <time>2025</time>
+          </div>
+          <p>디지털 시민성을 주제로 어린이 대상 프로그램 운영을 총괄했습니다.</p>
+        </article>
+        <article class="program">
+          <div class="program-top">
+            <h3>기술기반 문화예술학교 경기이룸학교</h3>
+            <time>2025</time>
+          </div>
+          <p>연극과 기술 기반 창작 교육을 연결하는 프로그램에서 연출과 강의를 맡았습니다.</p>
+        </article>
+        <article class="program">
+          <div class="program-top">
+            <h3>국립 세계문자박물관 한불 교류전</h3>
+            <time>2024</time>
+          </div>
+          <p>문자박물관 교류전 컨퍼런스 회의를 총괄 PD로 진행했습니다.</p>
+        </article>
+        <article class="program">
+          <div class="program-top">
+            <h3>디지털 3D 창작 워크숍</h3>
+            <time>2023</time>
+          </div>
+          <p>광주ACC 어린이문화원, 경북웹툰캠퍼스, 스케치소프트 등에서 창작 워크숍을 운영했습니다.</p>
+        </article>
+        <article class="program">
+          <div class="program-top">
+            <h3>학부모 리더교육 및 미래교육 강의</h3>
+            <time>2021~</time>
+          </div>
+          <p>서울시교육청 학부모리더교육에서 디지털 리터러시와 미래교육을 강의하고 멘토링했습니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="lectures" aria-labelledby="lectures-title">
+      <div class="section-header">
+        <div>
+          <p class="section-kicker">Talk Themes</p>
+          <h2 id="lectures-title">강연 주제</h2>
+        </div>
+        <p class="section-note">
+          기관과 대상에 맞춰 특강, 워크숍, 장기 프로젝트형 교육으로 구성할 수 있습니다.
+        </p>
+      </div>
+
+      <div class="split">
+        <article class="plain-panel">
+          <h3>대표 강연</h3>
+          <ul class="clean-list">
+            <li>AI 시대, 디지털 리터러시는 어떻게 달라져야 하는가</li>
+            <li>학부모를 위한 미래교육 길잡이</li>
+            <li>생성형 AI와 디지털 윤리, 시민성의 새로운 기준</li>
+            <li>기술기반 문화예술교육의 설계와 운영</li>
+            <li>메타버스와 3D 창작으로 여는 참여형 교육</li>
+          </ul>
+        </article>
+        <article class="plain-panel">
+          <h3>주요 대상</h3>
+          <ul class="clean-list">
+            <li>초·중·고 청소년 및 학교 동아리</li>
+            <li>학부모 리더교육 및 시민교육 참여자</li>
+            <li>예술강사, 문화예술교육 기획자, 활동가</li>
+            <li>박물관·문화재단·공공기관 교육 담당자</li>
+            <li>AI와 디지털 전환을 준비하는 일반 시민</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="quote-band" aria-label="프로필 메시지">
+      <p>AI와 디지털 기술을 누구나 이해하고 창작할 수 있는 교육 경험으로 만듭니다.</p>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Jessy Lee. AI & Future Education Instructor Portfolio.</p>
+  </footer>
 </body>
 </html>
