@@ -331,6 +331,112 @@
       font-weight: 800;
     }
 
+    .visual-reel {
+      width: calc(100% - 36px);
+      margin: 14px auto 0;
+      display: grid;
+      grid-template-columns: 88px 1fr auto;
+      align-items: center;
+      gap: 14px;
+      padding: 12px;
+      border: 1px solid rgba(221, 217, 204, 0.9);
+      border-radius: 8px;
+      background: rgba(255, 253, 248, 0.9);
+      box-shadow: 0 16px 34px rgba(42, 48, 43, 0.10);
+    }
+
+    .visual-thumb {
+      width: 88px;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border: 0;
+      border-radius: 8px;
+      background: #e7dfcf;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .visual-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .visual-copy {
+      min-width: 0;
+    }
+
+    .visual-label {
+      margin: 0 0 5px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .visual-title {
+      margin: 0;
+      color: var(--ink);
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 1.35;
+      word-break: keep-all;
+    }
+
+    .visual-note {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+      word-break: keep-all;
+    }
+
+    .visual-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .visual-control {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(47, 113, 109, 0.28);
+      border-radius: 8px;
+      background: rgba(255, 253, 248, 0.72);
+      color: var(--blue);
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .visual-control:hover {
+      transform: translateY(-1px);
+      border-color: rgba(47, 113, 109, 0.52);
+      background: rgba(255, 253, 248, 0.95);
+    }
+
+    .visual-progress {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 5px;
+    }
+
+    .visual-dot {
+      height: 3px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(47, 113, 109, 0.18);
+      cursor: pointer;
+    }
+
+    .visual-dot.is-active {
+      background: var(--cyan);
+    }
+
     .section {
       width: min(1120px, calc(100% - 40px));
       margin: 0 auto;
@@ -589,6 +695,37 @@
       display: flex;
     }
 
+    .image-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 41;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(31, 45, 42, 0.72);
+      backdrop-filter: blur(16px);
+    }
+
+    .image-modal.is-open {
+      display: flex;
+    }
+
+    .image-dialog {
+      width: min(560px, 100%);
+      overflow: hidden;
+      border-radius: 8px;
+      background: #111916;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+    }
+
+    .image-dialog img {
+      width: 100%;
+      max-height: min(76vh, 820px);
+      object-fit: contain;
+      background: #111916;
+    }
+
     .video-dialog {
       width: min(960px, 100%);
       overflow: hidden;
@@ -814,6 +951,21 @@
         font-size: 20px;
       }
 
+      .visual-reel {
+        width: calc(100% - 20px);
+        grid-template-columns: 74px 1fr;
+        gap: 12px;
+      }
+
+      .visual-thumb {
+        width: 74px;
+      }
+
+      .visual-controls {
+        grid-column: 1 / -1;
+        justify-content: end;
+      }
+
       .section {
         padding: 52px 0;
       }
@@ -900,6 +1052,30 @@
             <span>디지털 윤리</span>
           </div>
         </div>
+        <aside class="visual-reel" aria-label="Personal visual card series">
+          <button class="visual-thumb" type="button" aria-label="현재 비주얼 카드 크게 보기">
+            <img src="assets/visual-card-01.png" alt="Personal visual card preview" id="visualCardImage">
+          </button>
+          <div class="visual-copy">
+            <p class="visual-label">Personal Visual Cards</p>
+            <p class="visual-title" id="visualCardTitle">빛이 들어오는 시간</p>
+            <p class="visual-note" id="visualCardNote">삶과 기술 사이의 온도를 기록하는 8컷 비주얼 시리즈</p>
+          </div>
+          <div class="visual-controls" aria-label="비주얼 카드 탐색">
+            <button class="visual-control" type="button" data-visual-prev aria-label="이전 비주얼 카드">‹</button>
+            <button class="visual-control" type="button" data-visual-next aria-label="다음 비주얼 카드">›</button>
+          </div>
+          <div class="visual-progress" aria-label="비주얼 카드 순서">
+            <button class="visual-dot is-active" type="button" data-visual-index="0" aria-label="1번 카드"></button>
+            <button class="visual-dot" type="button" data-visual-index="1" aria-label="2번 카드"></button>
+            <button class="visual-dot" type="button" data-visual-index="2" aria-label="3번 카드"></button>
+            <button class="visual-dot" type="button" data-visual-index="3" aria-label="4번 카드"></button>
+            <button class="visual-dot" type="button" data-visual-index="4" aria-label="5번 카드"></button>
+            <button class="visual-dot" type="button" data-visual-index="5" aria-label="6번 카드"></button>
+            <button class="visual-dot" type="button" data-visual-index="6" aria-label="7번 카드"></button>
+            <button class="visual-dot" type="button" data-visual-index="7" aria-label="8번 카드"></button>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -1115,6 +1291,16 @@
     </div>
   </div>
 
+  <div class="image-modal" id="imageModal" aria-hidden="true">
+    <div class="image-dialog" role="dialog" aria-modal="true" aria-labelledby="imageTitle">
+      <div class="video-head">
+        <p class="video-title" id="imageTitle">Personal Visual Card</p>
+        <button class="video-close image-close" type="button" aria-label="이미지 닫기">×</button>
+      </div>
+      <img src="assets/visual-card-01.png" alt="Personal visual card large preview" id="imageModalImage">
+    </div>
+  </div>
+
   <script>
     const revealTargets = document.querySelectorAll(
       ".section, .profile-band, .field-card, .program, .timeline-item, .plain-panel, .quote-band"
@@ -1187,6 +1373,124 @@
     window.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && modal.classList.contains("is-open")) closeModal();
     });
+
+    const visualCards = [
+      {
+        src: "assets/visual-card-01.png",
+        title: "빛이 들어오는 시간",
+        note: "morning / breathing / sunlight"
+      },
+      {
+        src: "assets/visual-card-02.png",
+        title: "생각이 머무는 여백",
+        note: "listening / quiet / thought"
+      },
+      {
+        src: "assets/visual-card-03.png",
+        title: "AI와 전통 사이",
+        note: "AI / handmade / balance"
+      },
+      {
+        src: "assets/visual-card-04.png",
+        title: "돌아보려는 마음",
+        note: "recovery / softness / rest"
+      },
+      {
+        src: "assets/visual-card-05.png",
+        title: "사람을 연결하는 온도",
+        note: "warmth / connection / evening"
+      },
+      {
+        src: "assets/visual-card-06.png",
+        title: "혼자 걷는 수행",
+        note: "walking / meditation / silence"
+      },
+      {
+        src: "assets/visual-card-07.png",
+        title: "새롭게 밝아지는 사람",
+        note: "curiosity / creative / alive"
+      },
+      {
+        src: "assets/visual-card-08.png",
+        title: "두 번째 봄의 입구",
+        note: "second life / becoming / spring"
+      }
+    ];
+
+    const visualImage = document.querySelector("#visualCardImage");
+    const visualTitle = document.querySelector("#visualCardTitle");
+    const visualNote = document.querySelector("#visualCardNote");
+    const visualDots = [...document.querySelectorAll("[data-visual-index]")];
+    const imageModal = document.querySelector("#imageModal");
+    const imageModalImage = document.querySelector("#imageModalImage");
+    const imageTitle = document.querySelector("#imageTitle");
+    const imageClose = document.querySelector(".image-close");
+    const visualThumb = document.querySelector(".visual-thumb");
+    let visualIndex = 0;
+    let visualTimer = null;
+
+    const renderVisualCard = (nextIndex) => {
+      visualIndex = (nextIndex + visualCards.length) % visualCards.length;
+      const card = visualCards[visualIndex];
+      visualImage.src = card.src;
+      visualImage.alt = card.title;
+      visualTitle.textContent = card.title;
+      visualNote.textContent = card.note;
+      visualDots.forEach((dot, index) => dot.classList.toggle("is-active", index === visualIndex));
+    };
+
+    const startVisualTimer = () => {
+      window.clearInterval(visualTimer);
+      visualTimer = window.setInterval(() => renderVisualCard(visualIndex + 1), 3600);
+    };
+
+    document.querySelector("[data-visual-prev]").addEventListener("click", () => {
+      renderVisualCard(visualIndex - 1);
+      startVisualTimer();
+    });
+
+    document.querySelector("[data-visual-next]").addEventListener("click", () => {
+      renderVisualCard(visualIndex + 1);
+      startVisualTimer();
+    });
+
+    visualDots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        renderVisualCard(Number(dot.dataset.visualIndex));
+        startVisualTimer();
+      });
+    });
+
+    visualThumb.addEventListener("click", () => {
+      const card = visualCards[visualIndex];
+      imageModalImage.src = card.src;
+      imageModalImage.alt = card.title;
+      imageTitle.textContent = card.title;
+      imageModal.classList.add("is-open");
+      imageModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+      imageClose.focus();
+    });
+
+    const closeImageModal = () => {
+      imageModal.classList.remove("is-open");
+      imageModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+      visualThumb.focus();
+    };
+
+    imageClose.addEventListener("click", closeImageModal);
+    imageModal.addEventListener("click", (event) => {
+      if (event.target === imageModal) closeImageModal();
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && imageModal.classList.contains("is-open")) closeImageModal();
+    });
+
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      startVisualTimer();
+    }
   </script>
 </body>
 </html>
