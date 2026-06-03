@@ -132,18 +132,46 @@
       letter-spacing: 0;
     }
 
-    .hero-name {
-      display: block;
+    .hero-role {
       color: #0b57d0;
     }
 
     .lead {
-      margin: 28px 0 0;
-      max-width: 650px;
+      margin: 24px 0 0;
+      max-width: 700px;
       color: #3f4856;
       font-size: clamp(18px, 2.1vw, 22px);
       line-height: 1.78;
       word-break: keep-all;
+    }
+
+    .message-lines {
+      display: grid;
+      gap: 8px;
+      margin: 26px 0 0;
+      padding: 0;
+      list-style: none;
+      color: #273142;
+      font-size: clamp(19px, 2.2vw, 24px);
+      font-weight: 850;
+      line-height: 1.45;
+      word-break: keep-all;
+    }
+
+    .message-lines li {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .message-lines li::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      transform: translateY(-2px);
     }
 
     .tags {
@@ -560,8 +588,14 @@
         overflow-wrap: anywhere;
       }
 
+      .message-lines {
+        font-size: 18px;
+        line-height: 1.52;
+        overflow-wrap: anywhere;
+      }
+
       h1 {
-        font-size: clamp(38px, 11.8vw, 48px);
+        font-size: clamp(34px, 10.4vw, 44px);
       }
 
       .tags {
@@ -629,11 +663,16 @@
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow">AI & Future Education Instructor</p>
+        <p class="eyebrow">Do it Together</p>
         <h1 id="hero-title">
-          기술을 삶의 언어로 바꾸는
-          <span class="hero-name">이윤경 Jessy</span>
+          <span class="hero-role">AI & Future Education Mentor</span>
+          이윤경
         </h1>
+        <ul class="message-lines" aria-label="핵심 메시지">
+          <li>기술을 삶의 언어로 바꾸다</li>
+          <li>0과 1이라는 디지털 세상에서 0.5의 공감 온도를 높이다</li>
+          <li>시대의 선한 연결을 통해 윤리하다</li>
+        </ul>
         <p class="lead">
           디지털 리터러시, AI 교육, 기술기반 문화예술교육을 중심으로
           청소년·학부모·예술가·시민에게 미래교육의 감각과 창작 경험을 연결합니다.
