@@ -99,7 +99,33 @@
     }
 
     .nav-links a {
+      position: relative;
       padding: 8px 0;
+      transition: color 160ms ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 2px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--cyan);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.is-active {
+      color: var(--deep);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.is-active::after {
+      transform: scaleX(1);
     }
 
     .hero {
@@ -339,6 +365,13 @@
       border-radius: 8px;
       background: rgba(255, 253, 248, 0.88);
       box-shadow: 0 14px 40px rgba(18, 31, 54, 0.06);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .field-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(47, 113, 109, 0.28);
+      box-shadow: 0 18px 44px rgba(42, 48, 43, 0.10);
     }
 
     .field-card .num {
@@ -436,6 +469,13 @@
       border: 1px solid rgba(221, 217, 204, 0.92);
       border-radius: 8px;
       background: rgba(255, 253, 248, 0.88);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .program:hover {
+      transform: translateY(-4px);
+      border-color: rgba(47, 113, 109, 0.28);
+      box-shadow: 0 18px 44px rgba(42, 48, 43, 0.10);
     }
 
     .program-top {
@@ -480,12 +520,15 @@
       justify-content: center;
       min-height: 38px;
       padding: 0 13px;
+      appearance: none;
       border: 1px solid rgba(47, 113, 109, 0.28);
       border-radius: 8px;
       background: rgba(255, 253, 248, 0.72);
       color: var(--blue);
       font-size: 14px;
       font-weight: 850;
+      font-family: inherit;
+      cursor: pointer;
       transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
     }
 
@@ -493,6 +536,89 @@
       transform: translateY(-1px);
       border-color: rgba(47, 113, 109, 0.52);
       background: rgba(255, 253, 248, 0.95);
+    }
+
+    .program-link:focus-visible,
+    .video-close:focus-visible {
+      outline: 3px solid rgba(216, 120, 98, 0.34);
+      outline-offset: 3px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 520ms ease, transform 520ms ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .video-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(31, 45, 42, 0.72);
+      backdrop-filter: blur(16px);
+    }
+
+    .video-modal.is-open {
+      display: flex;
+    }
+
+    .video-dialog {
+      width: min(960px, 100%);
+      overflow: hidden;
+      border-radius: 8px;
+      background: #111916;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+    }
+
+    .video-head {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 16px 14px 18px;
+      color: #fffdf8;
+      background: #1f2d2a;
+    }
+
+    .video-title {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 850;
+      line-height: 1.4;
+      word-break: keep-all;
+    }
+
+    .video-close {
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255, 253, 248, 0.22);
+      border-radius: 8px;
+      background: rgba(255, 253, 248, 0.08);
+      color: #fffdf8;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .video-player {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000000;
+      display: block;
+    }
+
+    body.modal-open {
+      overflow: hidden;
     }
 
     .split {
@@ -564,6 +690,24 @@
       color: var(--muted);
       text-align: center;
       font-size: 14px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     @media (max-width: 920px) {
@@ -849,7 +993,7 @@
           </div>
           <p>남한산성역사문화관 총괄 PD로 기술 기반 관람 경험을 기획했습니다.</p>
           <div class="program-actions">
-            <a class="program-link" href="assets/namhansanseong-ost.mp4" target="_blank" rel="noopener">캐릭터 OST 영상 보기</a>
+            <button class="program-link" type="button" data-video-src="assets/namhansanseong-ost.mp4" data-video-title="남한산성 캐릭터 OST">캐릭터 OST 영상 보기</button>
           </div>
         </article>
         <article class="program">
@@ -866,7 +1010,7 @@
           </div>
           <p>음악·무용·AI를 접목한 융·복합 창의 문화예술교육 프로그램 연구개발 및 운영을 총괄했습니다.</p>
           <div class="program-actions">
-            <a class="program-link" href="assets/hanam-shared-school-highlight.mp4" target="_blank" rel="noopener">하이라이트 영상 보기</a>
+            <button class="program-link" type="button" data-video-src="assets/hanam-shared-school-highlight.mp4" data-video-title="하남 경기 공유학교 하이라이트">하이라이트 영상 보기</button>
           </div>
         </article>
         <article class="program">
@@ -883,7 +1027,7 @@
           </div>
           <p>광주 ACC 어린이문화원, 경북웹툰캠퍼스, 스케치소프트 등에서 문화예술 창작워크숍 운영 및 작품 수록</p>
           <div class="program-actions">
-            <a class="program-link" href="assets/ai-creator-opening.mp4" target="_blank" rel="noopener">AI 크리에이터 작품 보기</a>
+            <button class="program-link" type="button" data-video-src="assets/ai-creator-opening.mp4" data-video-title="AI 크리에이터 작품">AI 크리에이터 작품 보기</button>
           </div>
         </article>
         <article class="program">
@@ -939,5 +1083,89 @@
   <footer class="site-footer">
     <p>© 2026 Jessy Lee. AI & Future Education Instructor Portfolio.</p>
   </footer>
+
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-dialog" role="dialog" aria-modal="true" aria-labelledby="videoTitle">
+      <div class="video-head">
+        <p class="video-title" id="videoTitle">영상 보기</p>
+        <button class="video-close" type="button" aria-label="영상 닫기">×</button>
+      </div>
+      <video class="video-player" controls playsinline preload="metadata"></video>
+    </div>
+  </div>
+
+  <script>
+    const revealTargets = document.querySelectorAll(
+      ".section, .profile-band, .field-card, .program, .timeline-item, .plain-panel, .quote-band"
+    );
+
+    revealTargets.forEach((target) => target.classList.add("reveal"));
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -70px 0px" });
+
+    revealTargets.forEach((target) => revealObserver.observe(target));
+
+    const navLinks = [...document.querySelectorAll(".nav-links a")];
+    const sections = navLinks
+      .map((link) => document.querySelector(link.getAttribute("href")))
+      .filter(Boolean);
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => {
+          link.classList.toggle("is-active", link.getAttribute("href") === `#${entry.target.id}`);
+        });
+      });
+    }, { threshold: 0.35, rootMargin: "-20% 0px -55% 0px" });
+
+    sections.forEach((section) => navObserver.observe(section));
+
+    const modal = document.querySelector("#videoModal");
+    const video = modal.querySelector(".video-player");
+    const videoTitle = modal.querySelector("#videoTitle");
+    const closeVideo = modal.querySelector(".video-close");
+    let lastFocusedElement = null;
+
+    const openVideo = (button) => {
+      lastFocusedElement = button;
+      video.src = button.dataset.videoSrc;
+      videoTitle.textContent = button.dataset.videoTitle || button.textContent.trim();
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+      closeVideo.focus();
+    };
+
+    const closeModal = () => {
+      video.pause();
+      video.removeAttribute("src");
+      video.load();
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+      if (lastFocusedElement) lastFocusedElement.focus();
+    };
+
+    document.querySelectorAll("[data-video-src]").forEach((button) => {
+      button.addEventListener("click", () => openVideo(button));
+    });
+
+    closeVideo.addEventListener("click", closeModal);
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeModal();
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+    });
+  </script>
 </body>
 </html>
