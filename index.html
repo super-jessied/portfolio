@@ -8,16 +8,17 @@
   <style>
     :root {
       color-scheme: light;
-      --ink: #111827;
-      --muted: #5b6472;
-      --line: #d9e0ea;
-      --panel: #ffffff;
-      --soft: #f4f7fb;
-      --blue: #0b57d0;
-      --cyan: #00a3c7;
-      --green: #2d7d67;
-      --violet: #6d5dfc;
-      --shadow: 0 24px 70px rgba(18, 31, 54, 0.12);
+      --ink: #20242a;
+      --muted: #686b63;
+      --line: #ddd9cc;
+      --panel: #fffdf8;
+      --soft: #f7f3ea;
+      --blue: #2f716d;
+      --cyan: #d87862;
+      --green: #738f64;
+      --violet: #8b7094;
+      --deep: #1f2d2a;
+      --shadow: 0 24px 70px rgba(42, 48, 43, 0.14);
       font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
       background: var(--soft);
       color: var(--ink);
@@ -35,9 +36,9 @@
       margin: 0;
       overflow-x: hidden;
       background:
-        linear-gradient(115deg, rgba(11, 87, 208, 0.10), transparent 34%),
-        linear-gradient(245deg, rgba(0, 163, 199, 0.12), transparent 36%),
-        #f4f7fb;
+        linear-gradient(115deg, rgba(115, 143, 100, 0.15), transparent 34%),
+        linear-gradient(245deg, rgba(216, 120, 98, 0.13), transparent 36%),
+        #f7f3ea;
     }
 
     a {
@@ -54,8 +55,8 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      border-bottom: 1px solid rgba(217, 224, 234, 0.78);
-      background: rgba(244, 247, 251, 0.86);
+      border-bottom: 1px solid rgba(221, 217, 204, 0.78);
+      background: rgba(247, 243, 234, 0.86);
       backdrop-filter: blur(18px);
     }
 
@@ -83,8 +84,8 @@
       display: grid;
       place-items: center;
       border-radius: 8px;
-      background: #111827;
-      color: #ffffff;
+      background: var(--deep);
+      color: #fffdf8;
       font-size: 14px;
     }
 
@@ -133,13 +134,13 @@
     }
 
     .hero-role {
-      color: #0b57d0;
+      color: var(--blue);
     }
 
     .lead {
       margin: 24px 0 0;
       max-width: 700px;
-      color: #3f4856;
+      color: #484d46;
       font-size: clamp(18px, 2.1vw, 22px);
       line-height: 1.78;
       word-break: keep-all;
@@ -151,7 +152,7 @@
       margin: 26px 0 0;
       padding: 0;
       list-style: none;
-      color: #273142;
+      color: #2e352f;
       font-size: clamp(19px, 2.2vw, 24px);
       font-weight: 850;
       line-height: 1.45;
@@ -187,10 +188,10 @@
       max-width: 100%;
       flex: 0 1 auto;
       padding: 10px 13px;
-      border: 1px solid rgba(11, 87, 208, 0.18);
+      border: 1px solid rgba(47, 113, 109, 0.20);
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.72);
-      color: #174ea6;
+      background: rgba(255, 253, 248, 0.76);
+      color: #235f5b;
       font-size: 14px;
       font-weight: 800;
     }
@@ -209,21 +210,21 @@
       min-height: 48px;
       padding: 0 18px;
       border-radius: 8px;
-      border: 1px solid #111827;
+      border: 1px solid var(--deep);
       font-weight: 850;
       transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
     }
 
     .button.primary {
-      background: #111827;
-      color: #ffffff;
-      box-shadow: 0 12px 30px rgba(17, 24, 39, 0.18);
+      background: var(--deep);
+      color: #fffdf8;
+      box-shadow: 0 12px 30px rgba(31, 45, 42, 0.20);
     }
 
     .button.secondary {
-      background: rgba(255, 255, 255, 0.72);
-      color: #111827;
-      border-color: rgba(17, 24, 39, 0.2);
+      background: rgba(255, 253, 248, 0.74);
+      color: var(--deep);
+      border-color: rgba(31, 45, 42, 0.22);
     }
 
     .button:hover {
@@ -238,7 +239,7 @@
     .portrait-frame {
       overflow: hidden;
       border-radius: 8px;
-      background: #dbe5ef;
+      background: #e7dfcf;
       box-shadow: var(--shadow);
       aspect-ratio: 4 / 5;
     }
@@ -259,7 +260,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
       overflow: hidden;
-      border: 1px solid rgba(217, 224, 234, 0.9);
+      border: 1px solid rgba(221, 217, 204, 0.9);
       border-radius: 8px;
       background: var(--line);
       box-shadow: 0 18px 36px rgba(18, 31, 54, 0.14);
@@ -268,7 +269,7 @@
     .metric {
       min-width: 0;
       padding: 18px 14px;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 253, 248, 0.95);
       text-align: center;
     }
 
@@ -334,9 +335,9 @@
     .field-card {
       min-height: 176px;
       padding: 24px;
-      border: 1px solid rgba(217, 224, 234, 0.92);
+      border: 1px solid rgba(221, 217, 204, 0.92);
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.86);
+      background: rgba(255, 253, 248, 0.88);
       box-shadow: 0 14px 40px rgba(18, 31, 54, 0.06);
     }
 
@@ -360,8 +361,8 @@
     }
 
     .profile-band {
-      background: #111827;
-      color: #ffffff;
+      background: var(--deep);
+      color: #fffdf8;
     }
 
     .profile-band .section {
@@ -372,16 +373,16 @@
     }
 
     .profile-band h2 {
-      color: #ffffff;
+      color: #fffdf8;
     }
 
     .profile-band .section-kicker {
-      color: #7dd3fc;
+      color: #b7d8c2;
     }
 
     .bio {
       margin: 22px 0 0;
-      color: #d5dce7;
+      color: #dce4d8;
       font-size: 18px;
       line-height: 1.85;
       word-break: keep-all;
@@ -405,7 +406,7 @@
     }
 
     .year {
-      color: #7dd3fc;
+      color: #b7d8c2;
       font-size: 14px;
       font-weight: 900;
     }
@@ -417,7 +418,7 @@
 
     .timeline-item p {
       margin: 0;
-      color: #c6cedc;
+      color: #cfd9cc;
       line-height: 1.7;
       word-break: keep-all;
     }
@@ -432,9 +433,9 @@
       display: grid;
       gap: 14px;
       padding: 24px;
-      border: 1px solid rgba(217, 224, 234, 0.92);
+      border: 1px solid rgba(221, 217, 204, 0.92);
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 253, 248, 0.88);
     }
 
     .program-top {
@@ -474,9 +475,9 @@
 
     .plain-panel {
       padding: 30px;
-      border: 1px solid rgba(217, 224, 234, 0.92);
+      border: 1px solid rgba(221, 217, 204, 0.92);
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 253, 248, 0.88);
     }
 
     .plain-panel h3 {
@@ -495,7 +496,7 @@
     .clean-list li {
       position: relative;
       padding-left: 18px;
-      color: #3f4856;
+      color: #484d46;
       line-height: 1.65;
       word-break: keep-all;
     }
@@ -514,9 +515,9 @@
     .quote-band {
       padding: 72px 20px;
       background:
-        linear-gradient(90deg, rgba(11, 87, 208, 0.88), rgba(0, 128, 145, 0.86)),
-        #0b57d0;
-      color: #ffffff;
+        linear-gradient(90deg, rgba(47, 113, 109, 0.92), rgba(115, 143, 100, 0.86), rgba(216, 120, 98, 0.78)),
+        #2f716d;
+      color: #fffdf8;
       text-align: center;
     }
 
