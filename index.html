@@ -441,6 +441,7 @@
       width: min(1120px, calc(100% - 40px));
       margin: 0 auto;
       padding: 70px 0;
+      scroll-margin-top: 88px;
     }
 
     .section-header {
@@ -955,27 +956,86 @@
     }
 
     @media (max-width: 680px) {
+      .site-header {
+        z-index: 30;
+      }
+
       .nav {
-        width: min(100% - 28px, 1120px);
+        width: min(1120px, calc(100% - 28px));
+        height: auto;
+        padding: 10px 0;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .brand {
+        flex: 1 1 100%;
+        min-width: 0;
+      }
+
+      .brand-name {
+        gap: 6px 10px;
+        min-width: 0;
+      }
+
+      .brand-email {
+        display: none;
       }
 
       .nav-links {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding: 0;
+        border: 1px solid rgba(221, 217, 204, 0.94);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.97);
+        opacity: 1;
+        pointer-events: auto;
+        transform: none;
+      }
+
+      .nav-links a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 12px;
+        border: 1px solid rgba(47, 113, 109, 0.14);
+        border-radius: 8px;
+        background: rgba(247, 243, 234, 0.68);
+        color: var(--deep);
+      }
+
+      .nav-links a::after {
         display: none;
+      }
+
+      .nav-links a.is-active {
+        border-color: rgba(216, 120, 98, 0.42);
+        background: rgba(216, 120, 98, 0.12);
       }
 
       .hero,
       .section {
-        width: min(100% - 28px, 1120px);
+        width: min(1120px, calc(100% - 28px));
+      }
+
+      .section {
+        scroll-margin-top: 136px;
       }
 
       .hero {
         gap: 36px;
+        padding-top: 30px;
         padding-bottom: 48px;
       }
 
       .lead {
         font-size: 17px;
-        word-break: normal;
+        word-break: break-all;
         overflow-wrap: anywhere;
       }
 
@@ -991,15 +1051,21 @@
 
       .tags {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: 1fr;
         align-items: flex-start;
       }
 
       .tags li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 100%;
+        min-height: 44px;
         font-size: 13px;
+        line-height: 1.35;
         padding: 9px 12px;
         text-align: center;
+        overflow-wrap: anywhere;
       }
 
       .metric-strip {
@@ -1060,7 +1126,7 @@
           <a class="brand-email" href="mailto:jsslee75@naver.com">jsslee75@naver.com</a>
         </div>
       </div>
-      <div class="nav-links">
+      <div class="nav-links" id="primaryNav">
         <a href="#topics">강의분야</a>
         <a href="#career">이력</a>
         <a href="#programs">활동</a>
