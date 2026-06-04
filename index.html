@@ -967,6 +967,40 @@
       font-size: 14px;
     }
 
+    .scroll-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 39;
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(31, 45, 42, 0.18);
+      border-radius: 8px;
+      background: rgba(31, 45, 42, 0.94);
+      color: #fffdf8;
+      cursor: pointer;
+      font-size: 22px;
+      font-weight: 900;
+      box-shadow: 0 14px 30px rgba(31, 45, 42, 0.24);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 180ms ease, transform 180ms ease, background 180ms ease;
+    }
+
+    .scroll-top:hover {
+      background: #2f716d;
+      transform: translateY(6px);
+    }
+
+    .scroll-top.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
@@ -1189,6 +1223,27 @@
 
       .program-top {
         display: grid;
+      }
+
+      .scroll-top {
+        left: 310px;
+        right: auto;
+        bottom: 14px;
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 374px) {
+      .scroll-top {
+        left: 292px;
+      }
+    }
+
+    @media (max-width: 340px) {
+      .scroll-top {
+        left: 262px;
       }
     }
   </style>
@@ -1511,6 +1566,8 @@
     <p>© 2026 Jessy Lee. AI & Future Education Instructor Portfolio.</p>
   </footer>
 
+  <button class="scroll-top" type="button" aria-label="맨 위로 이동">↑</button>
+
   <div class="video-modal" id="videoModal" aria-hidden="true">
     <div class="video-dialog" role="dialog" aria-modal="true" aria-labelledby="videoTitle">
       <div class="video-head">
@@ -1561,6 +1618,19 @@
     window.addEventListener("resize", () => {
       if (window.matchMedia("(min-width: 681px)").matches) setMenuOpen(false);
     });
+
+    const scrollTopButton = document.querySelector(".scroll-top");
+    const toggleScrollTopButton = () => {
+      scrollTopButton.classList.toggle("is-visible", window.scrollY > 420);
+    };
+
+    scrollTopButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setMenuOpen(false);
+    });
+
+    toggleScrollTopButton();
+    window.addEventListener("scroll", toggleScrollTopButton, { passive: true });
 
     const revealTargets = document.querySelectorAll(
       ".section, .profile-band, .field-card, .program, .timeline-item, .plain-panel, .quote-band"
