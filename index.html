@@ -311,6 +311,45 @@
       margin-top: 34px;
     }
 
+    .email-access {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .email-access a {
+      color: var(--blue);
+      font-weight: 900;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .copy-email {
+      min-height: 34px;
+      padding: 0 11px;
+      border: 1px solid rgba(47, 113, 109, 0.24);
+      border-radius: 8px;
+      background: rgba(255, 253, 248, 0.82);
+      color: var(--blue);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 900;
+      transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    .copy-email:hover,
+    .copy-email:focus-visible {
+      border-color: rgba(47, 113, 109, 0.52);
+      background: #fffdf8;
+      transform: translateY(-1px);
+    }
+
     .button {
       display: inline-flex;
       align-items: center;
@@ -347,6 +386,7 @@
     }
 
     .button:focus-visible,
+    .copy-email:focus-visible,
     .menu-toggle:focus-visible,
     .visual-control:focus-visible,
     .visual-thumb:focus-visible,
@@ -1109,10 +1149,14 @@
 
     .contact-email {
       display: inline-flex;
-      margin-top: 18px;
       color: var(--blue);
       font-size: 18px;
       font-weight: 900;
+    }
+
+    .contact-copy .email-access {
+      margin-top: 18px;
+      font-size: 15px;
     }
 
     .contact-note {
@@ -1156,6 +1200,31 @@
 
     .mobile-contact-cta {
       display: none;
+    }
+
+    .copy-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 60;
+      min-width: 230px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      background: rgba(31, 45, 42, 0.97);
+      color: #fffdf8;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 850;
+      box-shadow: 0 16px 34px rgba(31, 45, 42, 0.26);
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 10px);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .copy-toast.is-visible {
+      opacity: 1;
+      transform: translate(-50%, 0);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1450,6 +1519,16 @@
       .contact-band .button {
         width: 100%;
       }
+
+      .email-access {
+        align-items: flex-start;
+      }
+
+      .copy-toast {
+        bottom: 76px;
+        width: calc(100% - 28px);
+        min-width: 0;
+      }
     }
 
     @media (max-width: 374px) {
@@ -1533,9 +1612,14 @@
           <li>문화예술교육</li>
         </ul>
         <div class="hero-actions">
-          <a class="button primary" href="mailto:jsslee75@naver.com?subject=강의·자문 문의드립니다" aria-label="강의와 자문 문의 이메일 보내기">강의·자문 문의하기</a>
+          <a class="button primary" href="mailto:jsslee75@naver.com?subject=%EA%B0%95%EC%9D%98%C2%B7%EC%9E%90%EB%AC%B8%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4" aria-label="강의와 자문 문의 이메일 보내기">강의·자문 문의하기</a>
           <a class="button secondary" href="#lectures">강연 주제 보기</a>
           <a class="button tertiary" href="#programs">주요 활동 보기</a>
+        </div>
+        <div class="email-access">
+          <span>문의 메일:</span>
+          <a href="mailto:jsslee75@naver.com" aria-label="문의 이메일 주소로 메일 보내기">jsslee75@naver.com</a>
+          <button class="copy-email" type="button" data-copy-email aria-label="문의 이메일 주소 복사하기">이메일 복사</button>
         </div>
       </div>
 
@@ -1880,10 +1964,14 @@
           <p class="section-kicker">Contact</p>
           <h2 id="contact-title">강의·워크숍·자문 문의</h2>
           <p>학부모 교육, 청소년 AI 창작 워크숍, 공공기관·문화기관 교육 프로그램 기획, AI 시민성·디지털 윤리 강의 의뢰를 받고 있습니다.</p>
-          <a class="contact-email" href="mailto:jsslee75@naver.com?subject=강의·자문 문의드립니다" aria-label="이윤경 강사에게 강의와 자문 문의 이메일 보내기">jsslee75@naver.com</a>
+          <div class="email-access">
+            <span>문의 이메일:</span>
+            <a class="contact-email" href="mailto:jsslee75@naver.com" aria-label="문의 이메일 주소로 메일 보내기">jsslee75@naver.com</a>
+            <button class="copy-email" type="button" data-copy-email aria-label="문의 이메일 주소 복사하기">이메일 복사</button>
+          </div>
           <p class="contact-note">기관명, 대상, 희망 일정, 강의/워크숍 목적을 함께 보내주시면 더 구체적으로 제안드릴 수 있습니다.</p>
         </div>
-        <a class="button primary" href="mailto:jsslee75@naver.com?subject=강의·자문 문의드립니다" aria-label="이메일로 강의와 자문 문의하기">이메일로 문의하기</a>
+        <a class="button primary" href="mailto:jsslee75@naver.com?subject=%EA%B0%95%EC%9D%98%C2%B7%EC%9E%90%EB%AC%B8%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4" aria-label="강의와 자문 문의 이메일 보내기">이메일로 문의하기</a>
       </div>
     </section>
 
@@ -1917,7 +2005,8 @@
   </footer>
 
   <button class="scroll-top" type="button" aria-label="맨 위로 이동">↑</button>
-  <a class="mobile-contact-cta" href="mailto:jsslee75@naver.com?subject=강의·자문 문의드립니다" aria-label="강의와 자문 문의 이메일 보내기">강의·자문 문의</a>
+  <a class="mobile-contact-cta" href="mailto:jsslee75@naver.com?subject=%EA%B0%95%EC%9D%98%C2%B7%EC%9E%90%EB%AC%B8%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4" aria-label="강의와 자문 문의 이메일 보내기">강의·자문 문의</a>
+  <div class="copy-toast" role="status" aria-live="polite"></div>
 
   <div class="video-modal" id="videoModal" aria-hidden="true">
     <div class="video-dialog" role="dialog" aria-modal="true" aria-labelledby="videoTitle">
@@ -1985,6 +2074,51 @@
 
     toggleScrollTopButton();
     window.addEventListener("scroll", toggleScrollTopButton, { passive: true });
+
+    const contactEmail = "jsslee75@naver.com";
+    const copyToast = document.querySelector(".copy-toast");
+    let copyToastTimer = null;
+
+    const fallbackCopyEmail = () => {
+      const textArea = document.createElement("textarea");
+      textArea.value = contactEmail;
+      textArea.setAttribute("readonly", "");
+      textArea.style.position = "fixed";
+      textArea.style.opacity = "0";
+      document.body.appendChild(textArea);
+      textArea.select();
+      const didCopy = document.execCommand("copy");
+      textArea.remove();
+      return didCopy;
+    };
+
+    const showCopyToast = () => {
+      window.clearTimeout(copyToastTimer);
+      copyToast.textContent = "이메일 주소가 복사되었습니다.";
+      copyToast.classList.add("is-visible");
+      copyToastTimer = window.setTimeout(() => {
+        copyToast.classList.remove("is-visible");
+      }, 2200);
+    };
+
+    document.querySelectorAll("[data-copy-email]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        let didCopy = false;
+
+        if (navigator.clipboard && window.isSecureContext) {
+          try {
+            await navigator.clipboard.writeText(contactEmail);
+            didCopy = true;
+          } catch {
+            didCopy = fallbackCopyEmail();
+          }
+        } else {
+          didCopy = fallbackCopyEmail();
+        }
+
+        if (didCopy) showCopyToast();
+      });
+    });
 
     const revealTargets = document.querySelectorAll(
       ".section, .profile-band, .field-card, .service-card, .program, .timeline-item, .lecture-card, .contact-band, .quote-band"
