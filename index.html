@@ -238,6 +238,10 @@
       word-break: keep-all;
     }
 
+    .title-line {
+      display: block;
+    }
+
     .hero-name {
       margin: 0 0 12px;
       color: var(--blue);
@@ -252,35 +256,6 @@
       font-size: clamp(18px, 2.1vw, 22px);
       line-height: 1.78;
       word-break: keep-all;
-    }
-
-    .message-lines {
-      display: grid;
-      gap: 8px;
-      margin: 26px 0 0;
-      padding: 0;
-      list-style: none;
-      color: #2e352f;
-      font-size: clamp(19px, 2.2vw, 24px);
-      font-weight: 850;
-      line-height: 1.45;
-      word-break: keep-all;
-    }
-
-    .message-lines li {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-    }
-
-    .message-lines li::before {
-      content: "";
-      flex: 0 0 auto;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--cyan);
-      transform: translateY(-2px);
     }
 
     .tags {
@@ -742,11 +717,20 @@
     }
 
     .bio {
+      max-width: 560px;
       margin: 22px 0 0;
       color: #dce4d8;
       font-size: 18px;
       line-height: 1.85;
       word-break: keep-all;
+    }
+
+    .bio p {
+      margin: 0;
+    }
+
+    .bio p + p {
+      margin-top: 20px;
     }
 
     .timeline {
@@ -1392,17 +1376,21 @@
         overflow-wrap: anywhere;
       }
 
-      .message-lines {
-        font-size: 18px;
-        line-height: 1.52;
-        overflow-wrap: anywhere;
-      }
-
       h1 {
         max-width: 100%;
         font-size: 38px;
         word-break: normal;
         overflow-wrap: anywhere;
+      }
+
+      .bio {
+        max-width: 34em;
+        font-size: 17px;
+        line-height: 1.78;
+      }
+
+      .bio p + p {
+        margin-top: 18px;
       }
 
       .tags {
@@ -1594,13 +1582,10 @@
         <p class="eyebrow">AI 시민성 교육기획자 / 사람중심 미래교육 큐레이터</p>
         <p class="hero-name">이윤경 Jessy Lee</p>
         <h1 id="hero-title">
-          AI 시대의 배움이 사람을 향하도록 설계합니다
+          <span class="title-line">AI 시대,</span>
+          <span class="title-line">사람을 향한</span>
+          <span class="title-line">배움의 설계자</span>
         </h1>
-        <ul class="message-lines" aria-label="핵심 메시지">
-          <li>바꾸다_기술을 삶의 언어로</li>
-          <li>높이다_0과 1 사이의 공감 온도를</li>
-          <li>윤리하다_선한 연결의 방식으로</li>
-        </ul>
         <p class="lead">
           디지털 리터러시, AI 시민성, 디지털 윤리, 문화기술 교육을 연결해
           청소년·학부모·교사·공공기관을 위한 미래교육 프로그램을 기획하고 강의합니다.
@@ -1702,24 +1687,22 @@
       <div class="section">
         <div>
           <p class="section-kicker">Profile</p>
-          <h2 id="career-title">AI 교육과 문화기술을 연결하는 연구자</h2>
-          <p class="bio">
-            서강대학교 대학원 경영(MBA) 석사 이후 전시컨벤션 PM,
-            마을미디어 사업 총괄, 문화예술교육 기획·운영을 거치며
-            기술과 사람 사이의 접점을 만들어왔습니다.
-            현재는 예스티엠 기업부설연구소 연구소장/이사 및 컬쳐임팩트의 객원이사로 임하며,
-            AI 기술 연계 기획과 지역 문화 연구를 수행하고 있습니다.
-            AI와 디지털 창작을 교육 현장의 실천 가능한 경험으로 번역합니다.
-            교육 현장의 언어와 공공 프로젝트의 구조를 함께 이해하며,
-            기관의 목적과 대상에 맞는 AI·디지털 리터러시 교육 경험을 설계합니다.
-          </p>
+          <h2 id="career-title">
+            <span class="title-line">AI와 문화기술을 잇는</span>
+            <span class="title-line">미래교육 기획자</span>
+          </h2>
+          <div class="bio">
+            <p>서강대학교 대학원 경영(MBA) 석사 이후 전시컨벤션 PM, 마을미디어 사업 총괄, 문화예술교육 기획·운영을 거치며 기술과 사람 사이의 접점을 만들어왔습니다.</p>
+            <p>현재는 예스티엠 기업부설연구소 연구소장/이사 및 컬쳐임팩트 객원이사로 활동하며, AI 기술 연계 기획과 지역 문화 연구를 수행하고 있습니다.</p>
+            <p>AI와 디지털 창작을 교육 현장의 실천 가능한 경험으로 번역하고, 기관의 목적과 대상에 맞는 디지털 리터러시·AI 시민성·문화기술 교육을 설계합니다.</p>
+          </div>
         </div>
 
         <div class="timeline" aria-label="주요 경력">
           <article class="timeline-item">
-            <span class="year">2025.12~</span>
+            <span class="year">2025.12 ~ 2026.5</span>
             <div>
-              <h3>국가교육위원회 AI교육 특별위원회 위원</h3>
+              <h3>국가교육위원회 AI교육 특별위원회 위원 참여</h3>
               <p>AI교육 특별위원회 활동</p>
             </div>
           </article>
@@ -1734,7 +1717,7 @@
             <span class="year">2025~</span>
             <div>
               <h3>한국생산성본부(KPC)</h3>
-              <p>DEQ 디지털윤리지도사자격 출제 및 감수 활동</p>
+              <p>(전) 인터넷윤리지도사(IEQ) 출제위원<br>디지털윤리 관련 자격 과정 출제 및 감수 활동</p>
             </div>
           </article>
           <article class="timeline-item">
